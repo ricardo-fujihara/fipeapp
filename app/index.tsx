@@ -1,17 +1,13 @@
 import FipeScreen from "@/components/FipeScreen";
+import { fetcher } from "@/services/fetcher";
 import { useRouter } from "expo-router";
+import useSWR from "swr";
 
 export default function Index() {
 
   const router = useRouter();
 
-  const data = [
-    { title: "Um" },
-    { title: "Dois" },
-    { title: "Três" },
-    { title: "Quatro" },
-    { title: "Cinco" },
-  ];
+  const {data} = useSWR("/carros/marcas", fetcher)
 
   return <FipeScreen data={data}/>
 }
