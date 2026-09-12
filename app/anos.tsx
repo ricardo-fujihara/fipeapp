@@ -4,7 +4,7 @@ import { fetcher } from "@/services/fetcher";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import useSWR from "swr";
 
-export default function Anos() {
+export default function AnoDetalhe() {
   const router = useRouter();
 
   const { codigoMarca, codigoModelo } = useLocalSearchParams();
@@ -19,11 +19,13 @@ export default function Anos() {
   );
 
   const goNext = (codigo: string) => {
-    console.log("Codigo: ", codigo);
-    // proxima tela
     router.navigate({
-      pathname: "/anos",
-      params: { codigoMarca: codigoMarca, codigoModelo: codigo },
+      pathname: "/veiculo",
+      params: {
+        codigoMarca: codigoMarca,
+        codigoModelo: codigoModelo,
+        codigoAno: codigo,
+      },
     });
   };
 
